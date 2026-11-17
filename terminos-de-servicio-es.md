@@ -1,6 +1,6 @@
 # Términos de Servicio
 
-**Última actualización: 11-17-2026**
+**Última actualización: 17-11-2026**
 
 *Este documento es una traducción del Terms of Service original en inglés, ofrecida por comodidad. En caso de cualquier discrepancia, prevalece la versión en inglés.*
 

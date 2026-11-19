@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last Updated: 11-17-2026**
+**Last Updated: 11-18-2026**
 
 These Terms of Service ("Terms") govern your access to and use of Dazzling (the "Service," "Dazzling," "the bot"), a Discord bot developed and operated by an individual developer known on Discord as **omgkawaiialeix** ("we," "us," "the Developer"). By adding Dazzling to a Discord server or interacting with it, you agree to these Terms. If you do not agree, do not use Dazzling.
 
@@ -13,6 +13,7 @@ Dazzling is a Discord bot that allows server administrators to:
 - Create, edit, organize, and share custom embeds (`/embed`).
 - Configure automated Welcome, Server Boost, and Goodbye messages (`/config`).
 - Configure a channel where Dazzling automatically detects Discord server invite links and replies with an alliance/partner message (`/partner`).
+- Configure an auto-role feature that assigns, and optionally removes, a Discord role when a member types a specific configured text in a designated channel, with a customizable confirmation (`/autorole`).
 - Choose the language in which Dazzling communicates with your server, Spanish or Portuguese (`/language`). Command names and placeholders always remain in English regardless of this setting.
 - View a categorized list of all available commands (`/help`).
 

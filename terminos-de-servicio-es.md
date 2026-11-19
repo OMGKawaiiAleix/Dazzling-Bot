@@ -1,6 +1,6 @@
 # Términos de Servicio
 
-**Última actualización: 17-11-2026**
+**Última actualización: 18 de noviembre de 2026**
 
 *Este documento es una traducción del Terms of Service original en inglés, ofrecida por comodidad. En caso de cualquier discrepancia, prevalece la versión en inglés.*
 
@@ -15,6 +15,7 @@ Dazzling es un bot de Discord que permite a los administradores de servidores:
 - Crear, editar, organizar y compartir embeds personalizados (`/embed`).
 - Configurar mensajes automáticos de Bienvenida, Boost y Despedida (`/config`).
 - Configurar un canal donde Dazzling detecta automáticamente links de invitación de Discord y responde con un mensaje de alianza/partner (`/partner`).
+- Configurar una función de auto-rol que asigna, y opcionalmente quita, un rol de Discord cuando alguien escribe un texto configurado en un canal designado, con una confirmación personalizable (`/autorole`).
 - Elegir el idioma en el que Dazzling se comunica con tu servidor, español o portugués (`/language`). Los nombres de los comandos y los placeholders siempre quedan en inglés, sin importar esta configuración.
 - Ver una lista de todos los comandos disponibles, organizados por categoría (`/help`).
 

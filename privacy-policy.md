@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated: 11-17-2026**
+**Last Updated: 11-18-2026**
 
 This Privacy Policy explains how Dazzling ("Dazzling," "the bot," "we," "us") collects, uses, stores, and protects information when you use Dazzling on Discord or interact with its official documentation.
 
@@ -12,14 +12,15 @@ By using Dazzling, you also agree to [Discord's own Privacy Policy](https://disc
 
 ## 1. Information We Collect
 
-We only collect the information that is strictly necessary for Dazzling's features to work. We group it into three categories:
+We only collect the information that is strictly necessary for Dazzling's features to work. We group it into four categories:
 
 ### 1.1 Content You Create Directly
 
-When a server administrator uses commands such as `/embed create`, `/embed edit`, `/config`, or `/partner message`, Dazzling stores the content that person types or selects, including:
+When a server administrator uses commands such as `/embed create`, `/embed edit`, `/config`, `/partner message`, or `/autorole`, Dazzling stores the content that person types or selects, including:
 
 - The text and settings of custom embeds: title, description, color, author name/icon, footer text/icon, image and thumbnail URLs, field text, button labels and URLs, and the internal name/folder used to organize them.
 - Which embed and channel are linked to the Welcome, Boost, Goodbye, or Partner (alliance) features.
+- For the auto-role feature (`/autorole`): the configured trigger text, and the custom confirmation message you set (either your own text, or a reference to one of your saved embeds).
 
 This content is written voluntarily by server administrators to configure the bot's behavior. We do not generate, suggest, or alter this content ourselves.
 
@@ -29,19 +30,26 @@ To make the features above work per server and per user, we store Discord's own 
 
 - The ID of the Discord server (guild) where a feature is configured.
 - The ID of the Discord user who created or owns a saved embed, or who configured a feature.
-- The ID of the Discord channel selected for a feature (e.g., where a welcome message or alliance alert should be sent).
+- The ID of the Discord channel selected for a feature (e.g., where a welcome message, alliance alert, or auto-role trigger is detected).
+- The ID(s) of the Discord role(s) configured for the auto-role feature (the role to assign, and, if configured, the role to remove).
 - The response language (Spanish or Portuguese) a server has selected via `/language`.
 
 We do **not** store real names, email addresses, phone numbers, or physical addresses. We do not have access to any of that information through Discord's API in the first place.
 
-### 1.3 Information Processed Temporarily (Not Stored)
+### 1.3 Automatically Generated Usage Counters
+
+Some numeric counters are generated and stored automatically, without any text being typed in by anyone:
+
+- **Alliance count**: for each user, we keep a running count of how many times they have posted a valid Discord server invite link in a server's configured Partner channel. This count is used only to power the `{{partner.count}}` placeholder (e.g., "this is your 5th alliance!") and is tied to a Discord user ID and server ID, not to any other personal information.
+
+### 1.4 Information Processed Temporarily (Not Stored)
 
 Some information is read or used for a moment to build a message, and is then discarded — it is never written to our database:
 
-- **Member information at the moment of an event**: when someone joins a server (Welcome), boosts it (Boost), leaves it (Goodbye), or posts an invite link in a configured alliance channel (Partner), we briefly use that person's Discord username, tag, mention, and avatar URL to fill in the placeholders (e.g., `{{user.name}}`) of the message the server administrator designed. This information is used only to render that one message and is immediately discarded afterward.
-- **Message content in the designated "Partner" channel only**: if a server administrator sets up a channel using `/partner channel`, Dazzling reads the text of messages posted in **that specific channel only**, solely to detect whether a message contains a Discord server invite link. If no invite link is found, nothing happens. If one is found, Dazzling looks up basic public information about that invite (the invited server's name, icon, and approximate member count, obtained directly from Discord) to build an automatic reply.
+- **Member information at the moment of an event**: when someone joins a server (Welcome), boosts it (Boost), leaves it (Goodbye), posts an invite link in a configured alliance channel (Partner), or types the configured trigger text for the auto-role feature, we briefly use that person's Discord username, tag, mention, and avatar URL to fill in the placeholders (e.g., `{{user.name}}`) of the message the server administrator designed. This information is used only to render that one message and is immediately discarded afterward.
+- **Message content in the designated "Partner" and auto-role channels only**: if a server administrator sets up a channel using `/partner channel` or configures the auto-role feature's channel, Dazzling reads the text of messages posted in **those specific channels only**, solely to detect whether a message contains a Discord server invite link (Partner) or matches the configured trigger text (auto-role). If neither condition is met, nothing happens.
   - Dazzling does **not** read, process, or store message content from any other channel, for any other purpose.
-  - The text of the message itself, and the invite link it contained, are never saved to our database or written to any log.
+  - The text of these messages is never saved to our database or written to any log, except for the trigger text you yourself configured for the auto-role feature (see Section 1.1), which is different from the messages members later send to match it.
 - **Webhook delivery**: if a server administrator chooses to send an embed through the Webhook option (to show a custom name and/or avatar instead of the bot's own), Dazzling creates or reuses a Discord webhook in that channel to deliver the message. That webhook is created and managed entirely by Discord; we do not store its ID, token, or any related data in our database.
 
 ---
@@ -50,7 +58,7 @@ Some information is read or used for a moment to build a message, and is then di
 
 We use the information described above exclusively to:
 
-- Operate the features you or your server administrators configure (custom embeds, Welcome/Boost/Goodbye automated messages, and the Partner alliance-link detection).
+- Operate the features you or your server administrators configure (custom embeds, Welcome/Boost/Goodbye automated messages, the Partner alliance-link detection, and the auto-role feature, including assigning or removing a Discord role when configured).
 - Let an embed's owner find, edit, rename, move, transfer, or delete their own saved content.
 - Maintain, debug, and improve Dazzling's functionality.
 
@@ -69,9 +77,9 @@ Our hosting provider's console does not keep a permanent log history by default,
 ## 4. Data Retention and Deletion
 
 - Data linked to a server is kept for as long as Dazzling remains a member of that server, with no fixed expiration date.
-- **Automatic deletion**: if Dazzling is removed from a server (kicked, or the server is deleted), all data associated with that server — every saved embed, Welcome/Boost/Goodbye configuration, and Partner configuration — is **automatically and immediately deleted** from our database. This does not happen if a server merely experiences a temporary Discord outage; Dazzling only deletes data when it has genuinely left a server.
-- **Manual deletion**: any user can delete their own saved embeds at any time using `/embed delete`, without needing to remove the bot from the server.
-- Message content read in the Partner alliance channel, and webhook data (Section 1.3), are never stored in the first place, so there is nothing to delete.
+- **Automatic deletion**: if Dazzling is removed from a server (kicked, or the server is deleted), all data associated with that server — every saved embed, Welcome/Boost/Goodbye configuration, Partner configuration, auto-role configuration, and alliance counts — is **automatically and immediately deleted** from our database. This does not happen if a server merely experiences a temporary Discord outage; Dazzling only deletes data when it has genuinely left a server.
+- **Manual deletion**: any user can delete their own saved embeds at any time using `/embed delete`, without needing to remove the bot from the server. A server administrator can clear the auto-role configuration at any time using `/autorole` with its `disable` option.
+- Message content read in the Partner alliance and auto-role channels, and webhook data (Section 1.4), are never stored in the first place, so there is nothing to delete.
 - **If Dazzling is permanently discontinued**, we will make reasonable efforts to delete all remaining stored data within a reasonable time after the Service shuts down.
 - If you would like us to delete specific data and the tools above don't cover your situation, you may reach out through our Discord support server and we will address your request.
 

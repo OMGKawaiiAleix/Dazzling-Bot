@@ -1,6 +1,6 @@
 # Política de Privacidad
 
-**Última actualización: 11-17-2026**
+**Última actualización: 18 de noviembre de 2026**
 
 *Este documento es una traducción del Privacy Policy original en inglés, ofrecida por comodidad. En caso de cualquier discrepancia, prevalece la versión en inglés.*
 
@@ -14,14 +14,15 @@ Al usar Dazzling, también aceptas la [Política de Privacidad](https://discord.
 
 ## 1. Información que Recolectamos
 
-Solo recolectamos la información estrictamente necesaria para que las funciones de Dazzling trabajen. La agrupamos en tres categorías:
+Solo recolectamos la información estrictamente necesaria para que las funciones de Dazzling trabajen. La agrupamos en cuatro categorías:
 
 ### 1.1 Contenido que Tú Creas Directamente
 
-Cuando un administrador de servidor usa comandos como `/embed create`, `/embed edit`, `/config`, o `/partner message`, Dazzling guarda el contenido que esa persona escribe o selecciona, incluyendo:
+Cuando un administrador de servidor usa comandos como `/embed create`, `/embed edit`, `/config`, `/partner message`, o `/autorole`, Dazzling guarda el contenido que esa persona escribe o selecciona, incluyendo:
 
 - El texto y la configuración de embeds personalizados: título, descripción, color, nombre/ícono del autor, texto/ícono del footer, URLs de imagen y miniatura, texto de campos, etiquetas y URLs de botones, y el nombre interno/carpeta usados para organizarlos.
 - Qué embed y qué canal están vinculados a las funciones de Bienvenida, Boost, Despedida, o Partner (alianzas).
+- Para la función de auto-rol (`/autorole`): el texto gatillo configurado, y el mensaje de confirmación propio que configures (tu propio texto, o una referencia a uno de tus embeds guardados).
 
 Este contenido lo escribe voluntariamente el administrador del servidor para configurar el comportamiento del bot. Nosotros no generamos, sugerimos ni alteramos este contenido.
 
@@ -31,19 +32,26 @@ Para que las funciones anteriores trabajen por servidor y por usuario, guardamos
 
 - El ID del servidor (guild) de Discord donde se configura una función.
 - El ID del usuario de Discord que creó o es dueño de un embed guardado, o que configuró una función.
-- El ID del canal de Discord elegido para una función (ej: dónde se debe enviar un mensaje de bienvenida o una alerta de alianza).
+- El ID del canal de Discord elegido para una función (ej: dónde se debe enviar un mensaje de bienvenida, una alerta de alianza, o dónde se detecta el texto gatillo de auto-rol).
+- El (los) ID del (de los) rol(es) de Discord configurados para la función de auto-rol (el rol a asignar, y si se configuró, el rol a quitar).
 - El idioma de respuesta (español o portugués) que un servidor eligió con `/language`.
 
 **No** guardamos nombres reales, correos electrónicos, números de teléfono, ni direcciones físicas. De entrada, no tenemos acceso a esa información a través de la API de Discord.
 
-### 1.3 Información Procesada Temporalmente (No Almacenada)
+### 1.3 Contadores de Uso Generados Automáticamente
+
+Algunos contadores numéricos se generan y guardan automáticamente, sin que nadie escriba ningún texto:
+
+- **Contador de alianzas**: por cada usuario, mantenemos un conteo de cuántas veces ha publicado un link de invitación válido de un servidor de Discord en el canal de alianzas configurado de un servidor. Este conteo solo se usa para el placeholder `{{partner.count}}` (ej: "¡esta es tu 5ta alianza!") y está vinculado a un ID de usuario y de servidor de Discord, no a ninguna otra información personal.
+
+### 1.4 Información Procesada Temporalmente (No Almacenada)
 
 Cierta información se lee o se usa por un momento para armar un mensaje, y luego se descarta — nunca se escribe en nuestra base de datos:
 
-- **Información del miembro al momento de un evento**: cuando alguien entra a un servidor (Bienvenida), lo boostea (Boost), se sale de él (Despedida), o pega un link de invitación en un canal de alianzas configurado (Partner), usamos brevemente el nombre de usuario, tag, mención y URL del avatar de esa persona de Discord para llenar los placeholders (ej: `{{user.name}}`) del mensaje que diseñó el administrador del servidor. Esta información se usa solo para armar ese mensaje y se descarta de inmediato después.
-- **Contenido de mensajes solo en el canal de "Partner"**: si un administrador de servidor configura un canal con `/partner channel`, Dazzling lee el texto de los mensajes publicados **únicamente en ese canal específico**, solo para detectar si un mensaje contiene un link de invitación de servidor de Discord. Si no se encuentra ningún link, no pasa nada. Si se encuentra uno, Dazzling consulta información pública básica sobre esa invitación (el nombre, ícono y cantidad aproximada de miembros del servidor invitado, obtenidos directamente de Discord) para armar una respuesta automática.
+- **Información del miembro al momento de un evento**: cuando alguien entra a un servidor (Bienvenida), lo boostea (Boost), se sale de él (Despedida), pega un link de invitación en un canal de alianzas configurado (Partner), o escribe el texto gatillo configurado para la función de auto-rol, usamos brevemente el nombre de usuario, tag, mención y URL del avatar de esa persona de Discord para llenar los placeholders (ej: `{{user.name}}`) del mensaje que diseñó el administrador del servidor. Esta información se usa solo para armar ese mensaje y se descarta de inmediato después.
+- **Contenido de mensajes solo en los canales de "Partner" y de auto-rol**: si un administrador de servidor configura un canal con `/partner channel` o configura el canal de la función de auto-rol, Dazzling lee el texto de los mensajes publicados **únicamente en esos canales específicos**, solo para detectar si un mensaje contiene un link de invitación de servidor de Discord (Partner), o si coincide con el texto gatillo configurado (auto-rol). Si no se cumple ninguna condición, no pasa nada.
   - Dazzling **no** lee, procesa, ni guarda contenido de mensajes de ningún otro canal, para ningún otro propósito.
-  - El texto del mensaje en sí, y el link de invitación que contenía, nunca se guardan en nuestra base de datos ni se escriben en ningún registro.
+  - El texto de estos mensajes nunca se guarda en nuestra base de datos ni se escribe en ningún registro, excepto el texto gatillo que tú mismo configuraste para la función de auto-rol (ver Sección 1.1), que es distinto de los mensajes que los miembros escriben después para hacerlo coincidir.
 - **Envío por Webhook**: si un administrador de servidor elige enviar un embed con la opción de Webhook (para mostrar un nombre y/o avatar distinto al del bot), Dazzling crea o reutiliza un webhook de Discord en ese canal para enviar el mensaje. Ese webhook es creado y administrado completamente por Discord; nosotros no guardamos su ID, token, ni ningún dato relacionado en nuestra base de datos.
 
 ---
@@ -52,7 +60,7 @@ Cierta información se lee o se usa por un momento para armar un mensaje, y lueg
 
 Usamos la información descrita arriba exclusivamente para:
 
-- Operar las funciones que tú o los administradores de tu servidor configuren (embeds personalizados, mensajes automáticos de Bienvenida/Boost/Despedida, y la detección de links de alianza de Partner).
+- Operar las funciones que tú o los administradores de tu servidor configuren (embeds personalizados, mensajes automáticos de Bienvenida/Boost/Despedida, la detección de links de alianza de Partner, y la función de auto-rol, incluyendo asignar o quitar un rol de Discord cuando se configure).
 - Permitir que el dueño de un embed lo encuentre, edite, renombre, mueva, transfiera, o elimine.
 - Mantener, depurar y mejorar el funcionamiento de Dazzling.
 
@@ -71,9 +79,9 @@ La consola de nuestro proveedor de hosting no guarda un historial permanente de 
 ## 4. Retención y Eliminación de Datos
 
 - Los datos vinculados a un servidor se guardan mientras Dazzling siga siendo miembro de ese servidor, sin una fecha de vencimiento fija.
-- **Eliminación automática**: si Dazzling es expulsado de un servidor (o el servidor se elimina), todos los datos asociados a ese servidor — cada embed guardado, configuración de Bienvenida/Boost/Despedida, y configuración de Partner — se **eliminan automática e inmediatamente** de nuestra base de datos. Esto no sucede si un servidor simplemente tiene una caída temporal de Discord; Dazzling solo elimina datos cuando realmente ha dejado el servidor.
-- **Eliminación manual**: cualquier usuario puede eliminar sus propios embeds guardados en cualquier momento usando `/embed delete`, sin necesidad de sacar al bot del servidor.
-- El contenido de mensajes leído en el canal de alianzas de Partner, y los datos de webhooks (Sección 1.3), nunca se almacenan, así que no hay nada que eliminar ahí.
+- **Eliminación automática**: si Dazzling es expulsado de un servidor (o el servidor se elimina), todos los datos asociados a ese servidor — cada embed guardado, configuración de Bienvenida/Boost/Despedida, configuración de Partner, configuración de auto-rol, y contadores de alianzas — se **eliminan automática e inmediatamente** de nuestra base de datos. Esto no sucede si un servidor simplemente tiene una caída temporal de Discord; Dazzling solo elimina datos cuando realmente ha dejado el servidor.
+- **Eliminación manual**: cualquier usuario puede eliminar sus propios embeds guardados en cualquier momento usando `/embed delete`, sin necesidad de sacar al bot del servidor. Un administrador del servidor puede borrar la configuración de auto-rol en cualquier momento usando `/autorole` con su opción `disable`.
+- El contenido de mensajes leído en los canales de alianzas de Partner y de auto-rol, y los datos de webhooks (Sección 1.4), nunca se almacenan, así que no hay nada que eliminar ahí.
 - **Si Dazzling se descontinúa de forma permanente**, haremos un esfuerzo razonable por eliminar todos los datos restantes dentro de un plazo razonable después de que el Servicio cierre.
 - Si quieres que eliminemos algún dato específico y las herramientas de arriba no cubren tu situación, puedes contactarnos a través de nuestro servidor de soporte en Discord y atenderemos tu solicitud.
 
